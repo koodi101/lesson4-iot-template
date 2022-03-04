@@ -1,0 +1,23 @@
+{
+  "name": "lesson4-iot-template",
+  "version": "0.1.0",
+  "description": "",
+  "main": "src/main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node src/main.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/koodi101/lesson4-iot-template.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/koodi101/lesson4-iot-template/issues"
+  },
+  "homepage": "https://github.com/koodi101/lesson4-iot-template#readme",
+  "dependencies": {
+    "node-ruuvitag": "^4.6.1"
+  }
+}
