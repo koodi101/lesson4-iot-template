@@ -57,6 +57,7 @@ send the temperature, pressure, etc. as numerical values:
 ``` json
 {
     temperature: data.temperature,
+    humidity: data.humidity,
     pressure: data.pressure
 }
 ```
