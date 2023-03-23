@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "description": "",
   "main": "src/main.js",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node src/main.js",
@@ -19,12 +20,12 @@
   },
   "homepage": "https://github.com/koodi101/lesson4-iot-template#readme",
   "dependencies": {
-    "node-fetch": "^3.2.1",
-    "node-ruuvitag": "^4.6.1"
+    "node-fetch": "^3.3.1",
+    "node-ruuvitag": "^4.7.0"
   },
   "devDependencies": {
-    "eslint": "^8.10.0",
+    "eslint": "^8.36.0",
     "eslint-config-airbnb-base": "^15.0.0",
-    "eslint-plugin-import": "^2.25.4"
+    "eslint-plugin-import": "^2.27.5"
   }
 }
