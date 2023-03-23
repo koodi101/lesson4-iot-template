@@ -21,17 +21,7 @@ Fork this repository (one per group) and clone it on the Raspberry Pi.
 
 Open the RuuviTag enclosure and remove the insulation from the battery.
 
-## Task 3: Run the setup script on the Pi
-
-Run the `setup.sh` script on the Raspberry Pi from the cloned folder:
-
-```
-./setup.sh
-```
-
-This allows non-root users to use bluetooth with node.
-
-## Task 4: Install dependencies and run the application
+## Task 3: Install dependencies and run the application
 
 ```
 npm install
@@ -40,9 +30,9 @@ npm start
 
 You should see data being broadcasted by the RuuviTags appear in the output.
 
-## Task 5: Change the request endpoint and body
+## Task 4: Change the request endpoint and body
 
-By default the code sends data to the teacher's chat server which you
+By default the code in `src/main.js` sends data to the teacher's chat server which you
 can read by sending a `GET` request to:
 
 ```
