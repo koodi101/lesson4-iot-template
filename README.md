@@ -49,8 +49,14 @@ Add this line to crontab to automatically refresh IPs
 * * * * * /usr/bin/curl -X PUT -H "Content-Type: application/json" -d "{\"hostname\":\"$(/usr/bin/hostname)\",\"ip\":\"$(/usr/bin/hostname -I)\"}" http://95.216.207.125:9000/api/ips
 ```
 
-The to list out the IP addresses using httpie
+Then to list out the IP addresses using httpie
 
 ```shell
 http GET http://95.216.207.125:9000/api/ips
+```
+
+SSH to a specific host
+
+```shell
+ssh pi@$(curl -s http://95.216.207.125:9000/api/ips |jq -r '.results[] |select(.hostname == "iot3").ip |gsub("^\\\\s+|\\\\s+$";"")')
 ```
