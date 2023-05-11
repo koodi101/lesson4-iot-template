@@ -7,47 +7,50 @@ NodeJS and NPM should be installed on the system.
 ## Objectives
 
 - Get a shell on the Raspberry Pi with SSH
-- Get the data flowing from the RuuviTag to the Node application
-- Add `node-fetch` as a dependency and use `fetch` to POST data to your group's chat server
+- Start the RuuviTag listener
 
-  > For example sending a message like `{"message": "temperature is ..."}`
-- Once the project's backend in running, change the request endpoint and body to send numerical data
+## Task 1: SSH
 
-## Task 1: Fork and clone
+Connect to the Raspberry Pi using SSH from your computer:
 
-Fork this repository (one per group) and clone it on the Raspberry Pi.
+```shell
+ssh pi@1.3.3.7
+```
+
+Where you replace `1.3.3.7` with the internal IP address of your group's Raspberry Pi.
+
+You can open a shared tmux session in your group by
+
+1. One member runs the `tmux` command
+2. Other members run `tmux attach` to share the terminal.
+
+To detach from the tmux session use `Ctrl-B Ctrl-D`.
 
 ## Task 2: Preparing the RuuviTag
 
 Open the RuuviTag enclosure and remove the insulation from the battery.
 
-## Task 3: Install dependencies and run the application
+## Task 3: Run the application
+
+Change directory to lesson4-iot-template and start the node program.
 
 ```
-npm install
+cd lesson4-iot-template
 npm start
 ```
 
 You should see data being broadcasted by the RuuviTags appear in the output.
 
-## Task 4: Change the request endpoint and body
+## Note for teachers
 
-By default the code in `src/main.js` sends data to the teacher's chat server which you
-can read by sending a `GET` request to:
+Add this line to crontab to automatically refresh IPs
 
+```shell
+* * * * * /usr/bin/curl -X PUT -H "Content-Type: application/json" -d "{\"hostname\":\"$(/usr/bin/hostname)\",\"ip\":\"$(/usr/bin/hostname -I)\"}" http://95.216.207.125:9000/api/ips
 ```
-http://95.216.154.69:9000/api/chats
-```
 
-Change the endpoint to connect to your group's server.
+The to list out the IP addresses using httpie
 
-Once you have deployed the project backend, you can change the body to
-send the temperature, pressure, etc. as numerical values:
-
-``` json
-{
-    temperature: data.temperature,
-    humidity: data.humidity,
-    pressure: data.pressure
-}
+```shell
+http GET http://95.216.207.125:9000/api/ips
 ```
